@@ -47,16 +47,3 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
-
-.config(function($stateProvider, $urlRouterProvider) {
-
-    $stateProvider
-        .state('app', {
-            url: "/app",
-            abstract: true,
-            templateUrl: "components/menu/menu.html",
-            controller: 'menuCtrl',
-            controller: 'menuCtrl'
-        })
-
-})
