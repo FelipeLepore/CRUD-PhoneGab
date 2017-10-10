@@ -1,12 +1,9 @@
 angular.module('crud')
+    .config(function($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'componente/crud/crud.html',
+                controller: 'crudCtrl'
 
-.config(function($stateProvider, $urlRouterProvider) {
-    $stateProvider
-        .state('crud', {
-            url: '/crud',
-            templateUrl: 'componente/crud/crud.html',
-            controller: 'CrudCtrl',
-            cache: false
-        })
-        // $urlRouterProvider.otherwise('/login');
-})
+            })
+    })
