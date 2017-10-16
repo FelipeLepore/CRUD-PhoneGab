@@ -17,3 +17,27 @@
  * under the License.
  */
 var app = angular.module('crud', ['ngRoute'])
+ .run(function(){
+    var db = openDatabase("Crud", "1.0", "Teste Web SQL Database", 200000);
+    console.log(db);
+    
+   // de qualquer forma, sempre teste que o objeto foi instanciado direito antes de usá-lo
+   if(!db){
+       alert('deu pau!');
+   }
+
+ db.transaction(function (tx) {
+    tx.executeSql(
+        "CREATE TABLE IF NOT EXISTS usuario (id integer primary key, nome varchar(max), email varchar(max), idade integer)",
+        [],
+        function (tx, rs) {
+            // index created
+        },
+        function (tx, e) {
+            if (e.message.indexOf("already exists") == -1) {
+                // index not created - already exists
+            }
+        });
+ });
+
+})
