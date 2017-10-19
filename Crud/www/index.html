@@ -5,10 +5,8 @@
 <script src="node_modules/angular-websql/angular-websql.js"></script>
 <script src="node_modules/angular-route/angular-route.min.js"></script>
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
-<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
 <script src="js/index.js"></script>
-<!-- <script src="cordova.js"></script> -->
+<script src="cordova.js"></script>
 <script src="componente/crud/crud.route.js"></script>
 <script src="componente/crud/crud.controller.js"></script>
 
@@ -38,84 +36,29 @@
 
     <link rel="stylesheet" type="text/css" href="css/material-kit.css" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/menu.css" />
     <title>App Teste Ipdv</title>
+
 </head>
 
-<body ng-app="crud">
-    <div ng-view></div>
-    <div id="menu">
-        <h3>Menu</h3>
+<body ng-app="crud" ng-controller="IndexCtrl">
+    <header>
+        <span class="menu-anchor"></span>
+    </header>
+    <menu>
         <ul>
-            <li class="active"><a href="#home" class="contentLink">Home </a></li>
-            <li><a href="#home" class="contentLink">About </a></li>
-            <li><a href="#home" class="contentLink">Portfolio </a></li>
-            <li><a href="#home" class="contentLink">Contact </a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#crud">Inserir</a></li>
+            <li><a href="#">Listar</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Contato</a></li>
         </ul>
-    </div>
-    <div data-role="page" class="pages" id="home">
-        <div data-role="header">
-            <a href="#" class="showMenu">Menu</a>
-            <h1>FB Style Menu</h1>
-        </div>
-        <!-- /header -->
-        <div data-role="content">
-            <p><strong>Note: You can swipe right/left to show/close menu.</strong></p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
-                book. </p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
-                book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
-                recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-        </div>
-        <!-- /content -->
-    </div>
+    </menu>
 </body>
 <script>
-    $("a.showMenu").click(function() {
-        if (menuStatus != true) {
-            $(".ui-page-active").animate({
-                marginLeft: "165px",
-            }, 300, function() {
-                menuStatus = true
-            });
-            return false;
-        } else {
-            $(".ui-page-active").animate({
-                marginLeft: "0px",
-            }, 300, function() {
-                menuStatus = false
-            });
-            return false;
-        }
-    });
-
-    $('.pages').live("swipeleft", function() {
-        if (menuStatus) {
-            $(".ui-page-active").animate({
-                marginLeft: "0px",
-            }, 300, function() {
-                menuStatus = false
-            });
-        }
-    });
-
-    $('.pages').live("swiperight", function() {
-        if (!menuStatus) {
-            $(".ui-page-active").animate({
-                marginLeft: "165px",
-            }, 300, function() {
-                menuStatus = true
-            });
-        }
-    });
-
-    $("#menu li a").click(function() {
-        var p = $(this).parent();
-        if ($(p).hasClass('active')) {
-            $("#menu li").removeClass('active');
-        } else {
-            $("#menu li").removeClass('active');
-            $(p).addClass('active');
-        }
+    $('.menu-anchor').on('click touchstart', function(e) {
+        $('html').toggleClass('menu-active');
+        e.preventDefault();
     });
 </script>
 
